@@ -1,0 +1,41 @@
+<!-- Display recipe details -->
+
+<h2>Reviews</h2>
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <strong>Rating:</strong> <%= review.rating %> - <%= review.content %>
+      <%= button_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Add a Review</h2>
+<%= form_with(model: [@recipe, @review], url: reviews_path(@recipe)) do |form| %>
+  <% if @review.errors.any? %>
+    <div>
+      <% @review.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <%= form.label :rating %>
+  <%= form.number_field :rating, in: 1..5 %>
+  <br>
+  <%= form.label :content %>
+  <%= form.text_area :content %>
+
+  <%= form.submit 'Create Review' %>
+<% end %>
+
+<h3>Reviews for <%= @recipe.title %></h3>
+
+<% @reviews.each do |review| %>
+  <div class="review">
+    <p>Rating: <%= review.rating %></p>
+    <p>Content: <%= review.content %></p>
+    <%= button_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+    <!-- Add other review details as needed -->
+  </div>
+<% end %>

@@ -1,0 +1,12 @@
+<!-- views/recipes/_form.html.erb -->
+
+<%= form_with(model: @recipe, url: recipe_path(@recipe), method: :patch, local: true, enctype: 'multipart/form-data') do |form| %>
+  <!-- Render the shared form partial -->
+  <%= render 'form_fields', form: form %>
+
+  <!-- Submit Button -->
+  <%= form.submit "Update Recipe" %>
+
+  <!-- Cancel Button -->
+  <%= link_to 'Cancel', root_path, class: 'cancel-button' %>
+<% end %>

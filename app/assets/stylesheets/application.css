@@ -1,0 +1,448 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ 
+
+ *= require_tree 
+ *= require_self
+
+ */
+ /* Style for the slideshow container */
+.slideshow-container {
+  left: 25%;
+  width: 100%; /* Adjusted for a larger slideshow */
+  margin: auto;
+  /*overflow: hidden;*/
+  background-color: #eceaea; /* Light gray */
+}
+
+.slideshow-container img{
+  width: 55%;
+}
+
+/* Style for slides */
+.mySlides {
+  display: none; /* Hide slides by default */
+  text-align: center;
+}
+
+/* Style for navigation dots */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 8px;
+  background-color: #ccc; /* Light gray */
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #ebe6e0; /* Light blue */
+}
+
+/* Style for the login page */
+body.login {
+  background-color: #ebe6e0
+} 
+
+.devise-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px; /* to make the box bigger */
+  background-color: white;
+  padding: 70px; /* more space inside box */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Header and Logo Styling */
+.header {
+  text-align: center;
+  background-color: #e7dfd7; /* Pastel pink */
+  padding: 15px;
+  box-shadow: 0px -3px 5px rgba(26, 7, 7, 0.2);
+}
+
+.logo {
+  font-family: 'Copperplate', fantasy; /* Fancy font */
+  font-size: 2em;
+  color: #000000; /* Black color for text */
+  display: inline-block; /* Make it an inline-block element to wrap the text */
+  padding: 5px 10px; /* Adjust padding as needed */
+  margin: 0;
+  border: 2px solid #000000; /* Black border */
+}
+
+.recipes-container {
+  margin-top: 20px; /* Adjust the value as needed */
+  margin-bottom: 5px;
+}
+
+/* Add a new class for recipe cards within .recipes-container */
+.recipes-container .recipe-card {
+  background-color: #ebe6e0;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.recipes-container .recipe-card h2,
+.recipes-container .recipe-card p,
+.recipes-container .recipe-card li {
+  text-align: center;
+  
+}
+
+.recipe-description {
+  font-size: 14px; /* Adjust the value to the desired text size */
+}
+
+.recipes-container .recipe-card h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.recipes-container .recipe-card p,
+.recipes-container .recipe-card li {
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.recipes-container .recipe {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px; /* Add space between posts */
+}
+
+.recipes-container .recipe-card img {
+  max-width: 100%; /* Ensure the image does not exceed the width of its container */
+  max-height: 300px;
+  height: auto; /* Maintain the aspect ratio of the image */
+  display: block; /* Center the image within its container */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+/* Align the search bar to the left and center vertically */
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  justify-content: center; /* Center the search bar horizontally */
+}
+
+.filterby-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  justify-content: center; /* Center the search bar horizontally */
+}
+
+/* Style the select box */
+.select-box {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f0f8ff; /* Light blue background */
+  color: #333;
+  margin-right: 10px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+/* Styling for Auth Links and Buttons */
+.auth-links,
+.btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.btn-primary {
+  font-family: 'Copperplate', fantasy;
+  background-color: #ebe6e0; /* Light blue */
+  color: black;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: #ffffff; /* Darker shade on hover */
+}
+
+/* navigation bar fixed at top of screen
+.auth-links {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ede6de; /* Adjust the background color as needed */
+  /*padding: 10px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Ensure it's above other elements */
+/*} */
+
+
+/* custom_devise_styles.css */
+
+
+.devise-container {
+  background-color: #ae9a8f; /* Another warm brown color for the container */
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  width: 300px;
+}
+
+.devise-form {
+  margin-top: 10px;
+}
+
+.devise-form label {
+  color: #543c2c; /* Dark brown color for labels */
+}
+
+.devise-form input[type="text"],
+.devise-form input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.devise-form input[type="submit"] {
+  background-color: 
+  #ffb672; /* Button color */
+  color: #fff; /* Button text color */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+body.profile {
+  background-color: #ebe6e0; 
+}
+
+/* User Profile Container */
+.user-profile-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+/* Recent Activity Section */
+.user-profile-container h2 {
+  color: #000000; /* Black color */
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.user-profile-container p {
+  margin-bottom: 10px;
+}
+
+/* No Recipes Posted Message */
+.user-profile-container .no-recipes-message {
+  font-style: italic;
+  color: #888888; /* Gray color */
+}
+
+/* Recipe Links */
+.user-profile-container a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+  text-decoration: underline;
+}
+
+.user-profile-container a:hover {
+  color: #000000; /* Darker shade on hover */
+}
+
+/* app/assets/stylesheets/recipes.css */
+
+/* Apply a general style to the form */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #ebe6e0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style labels */
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Style text inputs and textareas */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Style file input */
+input[type="file"] {
+  margin-bottom: 15px;
+}
+
+/* Style select dropdowns */
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Style submit button */
+input[type="submit"] {
+  background-color: #000000;
+  color: #fff;
+  padding: 12px 20px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Style cancel button */
+.cancel-button {
+  background-color: #999;
+  color: #fff;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Add the following styles at the end of your CSS file */
+
+/* Style for recipe card wrapper */
+.recipe-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Style for each recipe card */
+.recipe-card {
+  background-color: #ebe6e0;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.recipe-card img {
+  max-width: 100%;
+  max-height: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.recipe h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.recipe p,
+.recipe li {
+  color: #555;
+  margin-bottom: 5px;
+}
+
+/* Add space between recipe cards */
+.recipe-card + .recipe-card {
+  margin-top: 20px;
+}
+
+/* Style for Explore header */
+.explore-header {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid #000000; /* Black border */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow */
+  background-color: #ebe6e0; /* Light blue background */
+}
+
+.explore-header h2 {
+  font-size: 1.5em;
+  color: #333;
+  margin: 0;
+}
+
+/* app/assets/stylesheets/application.css */
+
+/* Your existing styles for btn and btn-primary classes */
+
+/* app/assets/stylesheets/application.css */
+
+/* Your existing styles for btn and btn-primary classes */
+
+.logout-button-container {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.logout-button-container .btn {
+  font-family: 'Copperplate', fantasy;
+  background-color: #ebe6e0; /* Light blue, matching btn-primary */
+  color: black;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.logout-button-container .btn:hover {
+  background-color: #ffffff; /* Darker shade on hover, matching btn-primary */
+}
+

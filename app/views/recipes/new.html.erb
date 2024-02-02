@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Form</title>
+  <%= stylesheet_link_tag 'application' %>
+  <style>
+    body {
+      text-align: center; /* Center align the content within the body */
+    }
+
+    h1 {
+      margin-top: 50px; /* Adjust the top margin as needed for spacing */
+    }
+  </style>
+</head>
+<body>
+  <h1>Create a New Recipe</h1>
+  <form action="/recipes" method="post" enctype="multipart/form-data">>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <!-- Recipe Title -->
+    <label for="recipe_title">Recipe Title:</label>
+    <input type="text" id="recipe_title" name="recipe[title]" required>
+    <br>
+
+    <!-- Recipe Description -->
+    <label for="recipe_description">Description:</label>
+    <textarea id="recipe_description" name="recipe[description]" rows="4" required></textarea>
+    <br>
+
+    <!-- Image/Video Upload -->
+    <label for="recipe_image">Image/Video (optional):</label>
+    <%= file_field :recipe, :image %>
+    <br>
+
+    <!-- Dietary Restrictions -->
+    <label for="dietary_restrictions">Dietary Restrictions:</label>
+    <select id="dietary_restrictions" name="recipe[dietary_restrictions][]" multiple>
+      <option value="" selected>None</option>
+      <option value="vegetarian">Vegetarian</option>
+      <option value="vegan">Vegan</option>
+      <option value="gluten_free">Gluten Free</option>
+      <option value="dairy free">Dairy Free</option>
+      <option value="pescatarian">Pescatarian</option>
+    </select>
+    <br>
+
+
+    <!-- Meal Type -->
+    <label for="meal_type">Meal Type:</label>
+    <select id="meal_type" name="recipe[meal_type]">
+      <option value="breakfast">Breakfast</option>
+      <option value="lunch">Lunch</option>
+      <option value="dinner">Dinner</option>
+      <option value="snack">Snack</option>
+      <option value="dessert">Dessert</option>
+    </select>
+    <br>
+
+    <!-- Time Constraint -->
+    <label for="time_constraint">Time Constraint:</label>
+    <select id="time_constraint" name="recipe[time_constraint]">
+      <option value="15_minutes_or_less">15 minutes or less</option>
+      <option value="30_minutes_or_less">30 minutes or less</option>
+      <option value="45_minutes or less">45 minutes or less</option>
+      <option value="1_plus_hour">1+ hour</option>
+    </select>
+    <br>
+
+    <!-- Ingredients List -->
+    <label for="ingredients_list">Ingredients (one ingredient per line):</label>
+    <textarea id="ingredients_list" name="recipe[ingredients_list]" rows="6" required></textarea>
+    <br>
+
+    <!-- Submit Button -->
+    <input type="submit" value="Create Recipe">
+
+    <!-- Cancel Button -->
+    <%= link_to 'Cancel', cancel_recipe_path, class: 'cancel-button' %>
+
+  </form>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<div class="header">
+  <h1 class="logo">Colgate Dorm Dishes</h1>
+  <div class="auth-links">
+    <% if user_signed_in? %>
+      <%= link_to 'Profile', user_path(current_user), class: 'btn btn-primary' %>
+      <div class="logout-button-container">
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
+      </div>
+      <%= link_to 'Go to Recipes', root_path(anchor: 'recipes-section'), class: 'btn btn-primary' %>
+      
+      <%= link_to 'Post a Recipe', new_recipe_path, class: 'btn btn-primary' %>
+    <% else %>
+      <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary' %>
+      <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
+      <%= link_to 'Go to Recipes', root_path(anchor: 'recipes-section'), class: 'btn btn-primary' %>
+      
+      <%= link_to 'Post a Recipe', new_recipe_path, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="slideshow-container">
+  <!-- Slides -->
+  <div class="mySlides">
+  <%= image_tag("image1.jpeg", alt: "Image 1")%>
+  </div>
+
+  <div class="mySlides">
+  <%= image_tag("image2.jpeg", alt: "Image 2")%>
+  </div>
+
+  <div class="mySlides">
+  <%= image_tag("image3.jpeg", alt: "Image 3")%>
+  </div>
+
+  <div class="mySlides">
+  <%= image_tag("image4.jpeg", alt: "Image 4")%>
+  </div>
+
+  <div class="mySlides">
+  <%= image_tag("image5.jpeg", alt: "Image 5")%>
+  </div>
+
+  <div class="mySlides">
+  <%= image_tag("image6.jpeg", alt: "Image 6")%>
+  </div>
+
+  <!-- Navigation dots -->
+  <div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</div>
+
+<div class="search-bar">
+  <%= form_tag search_home_path, method: :get do %>
+    <%= select_tag 'recipe[meal_type]', options_for_select(
+      [['Select Meal Type', ''], ['Breakfast', 'breakfast'], ['Lunch', 'lunch'], ['Dinner', 'dinner'], ['Snack', 'snack'], ['Dessert', 'dessert'],
+       ['Vegetarian', 'vegetarian'], ['Vegan', 'vegan'], ['Gluten Free', 'gluten free'], ['Dairy Free', 'dairy free'], ['Pescatarian', 'pescatarian']],
+      params.dig(:recipe, :meal_type)
+    ), class: 'search-select' %>
+    <%= submit_tag 'Search', class: 'search-button' %>
+  <% end %>
+</div>
+
+
+<div class="filterby-container">
+  <%= form_tag(filter_recipes_path, method: :get) do %>
+    <br>
+    <label for="time_constraint">Filter by Time Constraint:</label>
+    <%= select_tag 'recipe[time_constraint]', options_for_select([['15 minutes or less', '15_minutes or less'], ['30 minutes or less', '30_minutes_or_less'],['45 minutes or less', '45_minutes or less'] ,['1 plus hour', '1_plus_hour']], params.dig(:recipe, :time_constraint)) %>
+
+    <%= submit_tag 'Filter' %>
+  <% end %>
+</div>
+
+<!-- Explore header -->
+<div class="explore-header">
+  <h2>Explore</h2>
+</div>
+
+  
+<a name="recipes-section"></a>
+<div class="recipes-container">
+  <div class="recipe-cards-wrapper">
+    <% if @recipes.present? %>
+      <% @recipes.each do |recipe| %>
+        <div class="recipe-card">
+          <div class="recipe">
+            <h2><%= recipe.title %></h2>
+            <p class="recipe-descriptio"><%= recipe.description %></p>
+            <% if recipe.image.attached? %>
+              <%= image_tag recipe.image.url %>
+            <% end %>
+            <p><strong>Dietary Restrictions:</strong>
+              <% if recipe.dietary_restrictions.is_a?(Array) %>
+                <%= recipe.dietary_restrictions.join(', ') %>
+              <% else %>
+                No dietary restrictions specified
+              <% end %>
+            </p>
+
+            <p><strong>Meal Type:</strong> <%= recipe.meal_type %></p>
+            <p><strong>Time Constraint:</strong> <%= recipe.time_constraint %></p>
+            <p><strong>Ingredients:</strong></p>
+            <ul>
+              <% if recipe.ingredients_list.present? %>
+                <% recipe.ingredients_list.each_line do |ingredient| %>
+                  <li><%= ingredient.chomp %></li>
+                <% end %>
+              <% else %>
+                <p>No ingredients listed</p>
+              <% end %>
+            </ul>
+            <% if user_signed_in? && recipe.user == current_user %>
+              <%= link_to 'Edit', edit_recipe_path(recipe) %>
+              <%= button_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+              
+
+            <% end %>
+
+            <% if user_signed_in? %>
+              <% if current_user.bookmarked_recipes.include?(recipe) %>
+                <%= button_to 'Remove from Bookmarks', remove_from_bookmarks_recipe_path(recipe), method: :delete %>
+              <% else %>
+                <%= button_to 'Add to Bookmarks', add_to_bookmarks_recipe_path(recipe), method: :post %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No recipes available.</p>
+    <% end %>
+  </div>
+</div>
+
+
+

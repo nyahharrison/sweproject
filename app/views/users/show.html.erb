@@ -1,0 +1,26 @@
+<!-- app/views/users/show.html.erb -->
+<div class="user-profile-container">
+  <body class="profile"
+    <h1><%= @user.username %>'s Profile</h1>
+    <p>Email: <%= @user.email %></p>
+
+    <h2>Recent Activity</h2>
+
+    <% if @user.recipes.any? %>
+      <% @user.recipes.each do |recipe| %>
+        <p><%= link_to recipe.title, root_path(anchor: 'recipes-section') %></p>
+      <% end %>
+    <% else %>
+      <p class="no-recipes-message">No recipes posted</p>
+    <% end %>
+
+    <h2>Bookmarked Recipes</h2>
+    <% if @user.bookmarked_recipes.any? %>
+      <% @user.bookmarked_recipes.each do |recipe| %>
+        <p><%= link_to recipe.title, root_path(anchor: 'recipes-section') %></p>
+      <% end %>
+    <% else %>
+      <p class="no-recipes-message">No recipes bookmarked</p>
+    <% end %>
+  </body>
+</div>

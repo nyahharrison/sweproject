@@ -1,0 +1,25 @@
+<!-- Display recipe details -->
+
+<h2>Reviews</h2>
+<ul>
+<% if @reviews.present? %>
+  <% @reviews.each do |review| %>
+    <li>
+      <strong>Rating:</strong> <%= review.rating %> - <%= review.content %>
+    </li>
+  <% end %>
+  <% else %>
+    <li>No reviews available.</li>
+  <% end %>
+</ul>
+
+<%= form_with(model: [@recipe, @review], url: reviews_path(@recipe)) do |form| %>
+  <%= form.label :rating %>
+  <%= form.number_field :rating, in: 1..5 %>
+  <br>
+  <%= form.label :content %>
+  <%= form.text_area :content %>
+
+  <%= form.submit 'Create Review' %>
+<% end %>
+

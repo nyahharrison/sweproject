@@ -1,0 +1,23 @@
+# <%= form_with(model: vote, local: true) do |form| %>
+#     <!-- Form fields for creating or updating a vote -->
+#     <div class="field">
+#       <%= form.label :vote_type %>
+#       <%= form.select :vote_type, options_for_select([['Upvote', 'upvote'], ['Downvote', 'downvote']])
+#     </div>
+  
+#     <!-- Any other form fields you need -->
+  
+#     <div class="actions">
+#       <%= form.submit 'Submit Vote' %>
+#     </div>
+#   <% end %>
+  
+<%= form_for([recipe, Vote.new]) do |f| %>
+    <%= f.hidden_field :vote_type, value: 1 %>
+    <%= f.submit 'Upvote' %>
+  <% end %>
+  
+  <%= form_for([recipe, Vote.new]) do |f| %>
+    <%= f.hidden_field :vote_type, value: -1 %>
+    <%= f.submit 'Downvote' %>
+  <% end %>

@@ -1,0 +1,31 @@
+<!-- app/views/dietary_tags/index.html.erb -->
+
+<h1>Dietary Tags</h1>
+
+<% if notice %>
+  <p><%= notice %></p>
+<% end %>
+
+<p><%= link_to 'New Dietary Tag', new_dietary_tag_path %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dietary_tags.each do |dietary_tag| %>
+      <tr>
+        <td><%= dietary_tag.name %></td>
+        <td>
+          <%= link_to 'Edit', edit_dietary_tag_path(dietary_tag) %>
+          <%= link_to 'Delete', dietary_tag, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', recipes_path %>

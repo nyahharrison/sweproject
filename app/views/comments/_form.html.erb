@@ -1,0 +1,13 @@
+
+
+<%= form_with(model: comment, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :content %>
+      <%= form.text_area :content %>
+    </div>
+    <%= form.hidden_field :recipe_id, value: @recipe.id %>
+    <div class="actions">
+      <%= form.submit 'Create Comment' %>
+    </div>
+  <% end %>
+  

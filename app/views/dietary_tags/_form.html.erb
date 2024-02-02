@@ -1,0 +1,23 @@
+<!-- app/views/dietary_tags/_form.html.erb -->
+
+<%= form_with model: @dietary_tag, local: true do |form| %>
+  <% if @dietary_tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dietary_tag.errors.count, "error") %> prohibited this dietary tag from being saved:</h2>
+      <ul>
+        <% @dietary_tag.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Create Dietary Tag' %>
+  </div>
+<% end %>

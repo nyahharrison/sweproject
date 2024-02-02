@@ -1,0 +1,36 @@
+<!-- views/recipes/_form_fields.html.erb -->
+
+<!-- Recipe Title -->
+<%= form.label :title, "Recipe Title:" %>
+<%= form.text_field :title, required: true %>
+<br>
+
+<!-- Recipe Description -->
+<%= form.label :description, "Description:" %>
+<%= form.text_area :description, rows: 4, required: true %>
+<br>
+
+<!-- Image/Video Upload -->
+<%= form.label :image, "Image/Video (optional):" %>
+<%= form.file_field :image %>
+<br>
+
+<!-- Dietary Restrictions -->
+<%= form.label :dietary_restrictions, "Dietary Restrictions:" %>
+<%= form.select :dietary_restrictions, ['none', 'vegetarian', 'vegan', 'gluten_free', 'dairy_free', 'pescatarian'], {}, multiple: true %>
+<br>
+
+<!-- Meal Type -->
+<%= form.label :meal_type, "Meal Type:" %>
+<%= form.select :meal_type, ['breakfast', 'lunch', 'dinner', 'snack', 'dessert'] %>
+<br>
+
+<!-- Time Constraint -->
+<%= form.label :time_constraint, "Time Constraint:" %>
+<%= form.select :time_constraint, ['15_minutes_or_less', '30_minutes_or_less', '45_minutes_or_less', '1_plus_hour'] %>
+<br>
+
+<!-- Ingredients List -->
+<%= form.label :ingredients_list, "Ingredients (one ingredient per line):" %>
+<%= form.text_area :ingredients_list, rows: 6, required: true %>
+<br>

@@ -1,0 +1,5 @@
+<!-- app/views/bookmarks/index.html.erb -->
+<h1>Your Bookmarked Recipes</h1>
+<% current_user.bookmarked_recipes.each do |recipe| %>
+  <p><%= link_to recipe.title, recipe_path(recipe) %></p>
+<% end %>
